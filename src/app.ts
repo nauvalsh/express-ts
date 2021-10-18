@@ -1,5 +1,4 @@
-import 'module-alias/register';
-
+import './paths';
 import express from 'express';
 import config from 'config';
 import connect from './utils/connect';
@@ -12,7 +11,8 @@ const port = config.get<number>('server.port');
 const app = express();
 
 app.use(express.json());
-// https://github.com/rcruzper/express-actuator
+
+// Health check: https://github.com/rcruzper/express-actuator
 app.use(actuator());
 
 app.listen(port, () => {
